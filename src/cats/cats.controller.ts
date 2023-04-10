@@ -7,7 +7,7 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
-import { CreateCatDto } from './CreateCatDto';
+import { CreateCatDto } from './dto/CreateCatDto';
 import { CatsService } from './cats.service';
 import { Cat } from './interface/cat.interface';
 
