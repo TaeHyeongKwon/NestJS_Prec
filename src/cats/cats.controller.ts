@@ -8,12 +8,16 @@ import {
   Put,
 } from '@nestjs/common';
 import { CreateCatDto } from './CreateCatDto';
+import { CatsService } from './cats.service';
+import { Cat } from './interface/cat.interface';
 
 @Controller('cats')
 export class CatsController {
+  constructor(private catsService: CatsService) {}
+
   @Get()
-  findAll(): string {
-    return '모든 고양이 확인';
+  findAll(): Cat[] {
+    return this.catsService.findAll();
   }
 
   @Get(':id')
@@ -23,7 +27,7 @@ export class CatsController {
 
   @Post()
   create(@Body() CreateCatDto: CreateCatDto) {
-    return '새 고양이 입양';
+    return this.catsService.create(CreateCatDto);
   }
 
   @Put(':id')
